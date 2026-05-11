@@ -81,7 +81,8 @@ jobs:
       - name: Install specific @dcyfr/ai version
         run: npm install @dcyfr/ai@${{ matrix.dcyfr-ai-version }}
       - name: Set version environment variable
-        run: echo "DCYFR_AGENTS_VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+        run: |
+          echo "DCYFR_AGENTS_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
       - name: Run version compatibility test
         run: npm run test -- --testNamePattern="version|compatibility|runtime"
         continue-on-error: true
