@@ -9,6 +9,18 @@ import { promises as fs } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
+/**
+ * Allocate a unique tmpdir for one test invocation. Uses fs.mkdtemp under
+ * the OS temp root so the path is unguessable (no Date.now() collisions or
+ * symlink-redirect attack surface). Returns the directory; callers append
+ * a relative filename.
+ *
+ * Closes CodeQL js/insecure-temporary-file.
+ */
+async function makeTestTmpDir(): Promise<string> {
+  return fs.mkdtemp(join(tmpdir(), 'dcyfr-ai-agents-memory-test-'));
+}
+
 describe('ShortTermMemory', () => {
   let memory: ShortTermMemory;
 
@@ -80,10 +92,12 @@ describe('ShortTermMemory', () => {
 
 describe('LongTermMemory', () => {
   let memory: LongTermMemory;
+  let testDir: string;
   let testFile: string;
 
   beforeEach(async () => {
-    testFile = join(tmpdir(), `test-memory-${Date.now()}.json`);
+    testDir = await makeTestTmpDir();
+    testFile = join(testDir, 'memory.json');
     memory = new LongTermMemory({
       storagePath: testFile,
       autoSaveInterval: 0, // Disable auto-save for tests
@@ -92,11 +106,7 @@ describe('LongTermMemory', () => {
 
   afterEach(async () => {
     await memory.dispose();
-    try {
-      await fs.unlink(testFile);
-    } catch {
-      // Ignore errors
-    }
+    await fs.rm(testDir, { recursive: true, force: true });
   });
 
   it('should save and load from disk', async () => {
@@ -113,7 +123,7 @@ describe('LongTermMemory', () => {
   });
 
   it('should handle missing file on load', async () => {
-    const nonExistentFile = join(tmpdir(), 'nonexistent.json');
+    const nonExistentFile = join(testDir, 'nonexistent.json');
     const mem = new LongTermMemory({ storagePath: nonExistentFile });
 
     await expect(mem.load()).resolves.not.toThrow();
@@ -188,7 +198,8 @@ describe('LongTermMemory', () => {
   });
 
   it('should handle auto-save functionality', async () => {
-    const autoSaveFile = join(tmpdir(), `auto-save-${Date.now()}.json`);
+    const autoSaveDir = await makeTestTmpDir();
+    const autoSaveFile = join(autoSaveDir, 'auto-save.json');
     const autoSaveMem = new LongTermMemory({
       storagePath: autoSaveFile,
       autoSaveInterval: 100, // 100ms auto-save
@@ -196,21 +207,20 @@ describe('LongTermMemory', () => {
 
     try {
       await autoSaveMem.save('key1', 'value1');
-      
+
       // Wait for auto-save to trigger (give it 200ms)
       await new Promise(resolve => setTimeout(resolve, 200));
-      
+
       // Create new instance and verify data was persisted
       const verifyMem = new LongTermMemory({ storagePath: autoSaveFile });
       await verifyMem.load();
       expect(await verifyMem.get('key1')).toBe('value1');
-      
+
       await autoSaveMem.dispose();
       await verifyMem.dispose();
-      await fs.unlink(autoSaveFile);
-    } catch (error) {
+    } finally {
       await autoSaveMem.dispose().catch(() => {});
-      throw error;
+      await fs.rm(autoSaveDir, { recursive: true, force: true });
     }
   });
 
@@ -227,17 +237,16 @@ describe('LongTermMemory', () => {
 
   it('should handle load errors for corrupted files', async () => {
     // Write invalid JSON to file
-    const corruptedFile = join(tmpdir(), `corrupted-${Date.now()}.json`);
+    const corruptedFile = join(testDir, 'corrupted.json');
     await fs.writeFile(corruptedFile, 'invalid json {[}', 'utf-8');
 
     const mem = new LongTermMemory({ storagePath: corruptedFile });
-    
+
     // Should not throw, but log error and start with empty store
     await mem.load();
     expect(await mem.keys()).toHaveLength(0);
-    
+
     await mem.dispose();
-    await fs.unlink(corruptedFile).catch(() => {});
   });
 
   it('should delete and clear operations', async () => {
