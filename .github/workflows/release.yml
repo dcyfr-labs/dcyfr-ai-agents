@@ -37,6 +37,11 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          # PAT with `workflow` scope when available — GITHUB_TOKEN cannot push
+          # tags on commits touching .github/workflows/* (server-side reject).
+          # Falls back cleanly; degraded mode no-ops tag push for such releases.
+          token: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v6
         with:
           node-version: '24.13.0'
