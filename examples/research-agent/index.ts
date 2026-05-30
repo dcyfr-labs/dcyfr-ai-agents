@@ -8,15 +8,20 @@
  */
 
 import { Agent, searchTool, calculatorTool, LongTermMemory } from '../../src/index.js';
+import { promises as fs } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
 async function main(): Promise<void> {
   console.log('🔬 Research Agent Example\n');
 
-  // Create persistent memory
+  // Create persistent memory. Allocate an unguessable per-run directory under
+  // the OS temp root via fs.mkdtemp so the memory file isn't a predictable,
+  // symlink-redirectable path in a world-writable location. Mirrors the secure
+  // pattern in tests/unit/memory.test.ts. Closes CodeQL js/insecure-temporary-file.
+  const memoryDir = await fs.mkdtemp(join(tmpdir(), 'research-agent-memory-'));
   const memory = new LongTermMemory({
-    storagePath: join(tmpdir(), 'research-agent-memory.json'),
+    storagePath: join(memoryDir, 'memory.json'),
     autoSaveInterval: 5000,
   });
 
