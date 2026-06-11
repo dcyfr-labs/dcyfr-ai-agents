@@ -1,0 +1,21 @@
+name: Dependabot auto-merge
+
+# Thin caller: real logic lives in the shared reusable workflow in dcyfr-labs/.github.
+# Trigger + actor gate + permissions match the prior working workflow; only the post-gate
+# action (gated direct-merge instead of the broken `gh pr merge --auto`) changed.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    uses: dcyfr-labs/.github/.github/workflows/dependabot-auto-merge.yml@main
+    permissions:
+      contents: write
+      pull-requests: write
