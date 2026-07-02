@@ -10,7 +10,7 @@
   last_validated: 2026-04-10
 -->
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/dcyfr/dcyfr-ai-agents)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/dcyfr-labs/dcyfr-ai-agents)
 
 > Autonomous agent framework template - Build AI agents with tool usage, memory, and observability
 
