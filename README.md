@@ -1,13 +1,11 @@
 # @dcyfr/ai-agents
 
-![Use Case: Customer Service](https://img.shields.io/badge/Use%20Case-Customer%20Service-informational?style=flat-square)
-
 <!-- README-META
   tlp_clearance: GREEN
   status: active
   name: dcyfr-ai-agents
   description: Autonomous agent framework template - DCYFR AI starter
-  last_validated: 2026-04-10
+  last_validated: 2026-07-11
 -->
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/dcyfr-labs/dcyfr-ai-agents)
@@ -18,10 +16,11 @@
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20+-green?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Tests](https://img.shields.io/badge/Tests-95%25%20Coverage-28a745?style=flat-square)](./tests/)
-[![Sponsor](https://img.shields.io/badge/sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/dcyfr)
+[![Tests](https://img.shields.io/badge/Tests-Vitest-28a745?style=flat-square)](./tests/)
+[![Sponsor](https://img.shields.io/badge/sponsor-30363D?style=flat-square&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/dcyfr)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
+![Use Case: Customer Service](https://img.shields.io/badge/Use%20Case-Customer%20Service-informational?style=flat-square)
 ![Use Case: Research](https://img.shields.io/badge/Use%20Case-Research-informational?style=flat-square)
 ![Use Case: Code Generation](https://img.shields.io/badge/Use%20Case-Code%20Generation-informational?style=flat-square)
 
@@ -31,7 +30,7 @@
 
 ```bash
 # Clone template
-npx degit dcyfr/dcyfr-ai-agents my-agent
+npx degit dcyfr-labs/dcyfr-ai-agents my-agent
 cd my-agent
 
 # Install and run
@@ -44,12 +43,14 @@ npm run dev
 
 ## 🧭 Related Packages
 
-| Package                                | Purpose                | Type        |
-| -------------------------------------- | ---------------------- | ----------- |
-| [@dcyfr/ai](../dcyfr-ai)               | Core AI framework      | npm package |
-| [@dcyfr/ai-nodejs](../dcyfr-ai-nodejs) | Node.js starter        | Template    |
-| [@dcyfr/ai-api](../dcyfr-ai-api)       | REST API template      | Template    |
-| [dcyfr-labs](../dcyfr-labs)            | Production Next.js app | Application |
+| Package                                                            | Purpose                | Type        |
+| ------------------------------------------------------------------ | ---------------------- | ----------- |
+| [@dcyfr/ai](https://github.com/dcyfr-labs/dcyfr-ai)                 | Core AI framework      | npm package |
+| [@dcyfr/ai-nodejs](https://github.com/dcyfr-labs/dcyfr-ai-nodejs)   | Node.js starter        | Template    |
+| [@dcyfr/ai-api](https://github.com/dcyfr-labs/dcyfr-ai-api)         | REST API template      | Template    |
+| [dcyfr-labs](https://github.com/dcyfr-labs/dcyfr-labs)              | Production Next.js app | Application |
+
+> This template declares an **optional peer dependency** on [`@dcyfr/ai`](https://github.com/dcyfr-labs/dcyfr-ai) (`^3.0.3`) — install it if you want the core framework integrations; everything else works without it.
 
 ---
 
@@ -63,7 +64,6 @@ npm run dev
 
 - **DCYFR** is a registered trademark of DCYFR Labs.
 - Primary domain: [www.dcyfr.ai](https://www.dcyfr.ai)
-- Trademark guidance: [../TRADEMARK.md](../TRADEMARK.md)
 - Licensing details: [LICENSE](./LICENSE)
 
 Perfect for developers building AI assistants, research agents, workflow automation, or any application requiring autonomous decision-making with external tool integration.
@@ -105,7 +105,7 @@ Perfect for developers building AI assistants, research agents, workflow automat
 - [Architecture](#️-architecture)
   - [Agent Execution Flow](#agent-execution-flow)
   - [Core Components](#core-components)
-- [Detailed Examples](#-detailed-examples)
+- [Examples](#-examples)
 - [Testing](#-testing)
 - [API Reference](#-api-reference)
 - [Documentation](#-documentation)
@@ -150,9 +150,9 @@ Perfect for developers building AI assistants, research agents, workflow automat
 
 - **📊 Developer Experience** - Built for productivity
   - **TypeScript-first**: 100% strict mode, full IntelliSense
-  - **95%+ test coverage**: Every feature thoroughly tested
+  - **Comprehensive test suite**: Unit, integration, and agent tests with Vitest
   - **Zero config**: Works out of the box
-  - **3 complete examples**: Customer service, research, code generation
+  - **4 complete examples**: Customer service, research, code generation, autonomous research
 
 ### Production Ready
 
@@ -197,7 +197,7 @@ npm run build
 ## 📦 Installation
 
 ```bash
-npx degit dcyfr/dcyfr-ai-agents my-project
+npx degit dcyfr-labs/dcyfr-ai-agents my-project
 cd my-project
 npm install
 ```
@@ -437,11 +437,11 @@ agent.registerTool(weatherTool);
 ## 🧪 Testing
 
 ```bash
-# Run all tests
-npm test
+# Run all tests once
+npm run test:run
 
 # Watch mode
-npm run test
+npm test
 
 # Coverage report
 npm run test:coverage
@@ -451,7 +451,8 @@ npm run test:coverage
 
 - **Unit tests** - `tests/unit/*.test.ts`
 - **Integration tests** - `tests/integration/*.test.ts`
-- **Fixtures** - `tests/fixtures/`
+- **Agent tests** - `tests/agent/*.test.ts`
+- **Policy binding** - `tests/policy-binding.test.ts`
 
 [⬆️ Back to top](#dcyfrai-agents)
 
@@ -495,10 +496,13 @@ Both `ShortTermMemory` and `LongTermMemory` implement:
 
 - **[README](README.md)** - This document (Quick start, architecture, examples)
 - **[API Reference](docs/API.md)** - Comprehensive API documentation
+- **[Architecture](docs/ARCHITECTURE.md)** - System design and component overview
+- **[Version Compatibility](docs/VERSION_COMPATIBILITY.md)** - Supported dependency versions
 - **[Examples](examples/)** - Complete working examples:
-  - [`customer-service/`](examples/customer-service/) - Customer support agent
-  - [`research-agent/`](examples/research-agent/) - Research and analysis agent
-  - [`code-gen-agent/`](examples/code-gen-agent/) - Code generation agent
+  - [`customer-service/`](examples/customer-service/) - Customer support agent (`npm run example:customer-service`)
+  - [`research-agent/`](examples/research-agent/) - Research and analysis agent (`npm run example:research`)
+  - [`code-gen-agent/`](examples/code-gen-agent/) - Code generation agent (`npm run example:code-gen`)
+  - [`autonomous-research-agent/`](examples/autonomous-research-agent/) - Standalone autonomous research agent (own package, see its README)
 - **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
 - **[Security Policy](SECURITY.md)** - Vulnerability reporting and security practices
 
@@ -522,16 +526,16 @@ Both `ShortTermMemory` and `LongTermMemory` implement:
 - 🌐 **DCYFR Website**: [https://www.dcyfr.ai](https://www.dcyfr.ai)
 - 📧 **Support Email**: [hello@dcyfr.ai](mailto:hello@dcyfr.ai)
 - 📚 **Documentation Portal**: [https://docs.dcyfr.ai](https://docs.dcyfr.ai) (coming soon)
-- 🐙 **GitHub Organization**: [https://github.com/dcyfr](https://github.com/dcyfr)
+- 🐙 **GitHub Organization**: [https://github.com/dcyfr-labs](https://github.com/dcyfr-labs)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/dcyfr-labs/dcyfr-ai-agents/discussions)
 - 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/dcyfr-labs/dcyfr-ai-agents/issues)
 
 ### Related Projects
 
-- [@dcyfr/ai](https://github.com/dcyfr/dcyfr-ai) - Core AI framework and abstractions
-- [@dcyfr/ai-rag](https://github.com/dcyfr/dcyfr-ai-rag) - RAG (Retrieval Augmented Generation) systems
-- [@dcyfr/ai-code-gen](https://github.com/dcyfr/dcyfr-ai-code-gen) - Code generation utilities
-- [@dcyfr/ai-graphql](https://github.com/dcyfr/dcyfr-ai-graphql) - GraphQL API templates
+- [@dcyfr/ai](https://github.com/dcyfr-labs/dcyfr-ai) - Core AI framework and abstractions
+- [@dcyfr/ai-rag](https://github.com/dcyfr-labs/dcyfr-ai-rag) - RAG (Retrieval Augmented Generation) systems
+- [@dcyfr/ai-code-gen](https://github.com/dcyfr-labs/dcyfr-ai-code-gen) - Code generation utilities
+- [@dcyfr/ai-graphql](https://github.com/dcyfr-labs/dcyfr-ai-graphql) - GraphQL API templates
 
 [⬆️ Back to top](#dcyfrai-agents)
 
@@ -541,11 +545,30 @@ Both `ShortTermMemory` and `LongTermMemory` implement:
 
 ### Environment Variables
 
+The core template (`src/`) reads no environment variables — it runs out of the box. [`.env.example`](.env.example) lists optional variables you can wire up as you extend the template:
+
 ```bash
-# None required - fully self-contained template
-# Add your own as needed (e.g., API keys)
-OPENAI_API_KEY=your-key-here  # If integrating with LLM providers
+# Secrets (1Password reference format shown in .env.example)
+OPENAI_API_KEY=            # LLM provider key
+
+# Configuration
+OPENAI_API_BASE=
+VECTOR_DB_PROVIDER=        # Vector DB integration
+VECTOR_DB_URL=
+VECTOR_DB_INDEX=
+LLM_PROVIDER=              # LLM routing
+LLM_MODEL=
+LLM_EMBEDDING_MODEL=
+TELEMETRY_ENABLED=         # Telemetry
+TELEMETRY_STORAGE=
+DCYFR_AGENTS_VERSION=
+NODE_ENV=
+RESEARCH_MAX_DEPTH=        # Example-specific tuning
+CS_RESPONSE_TIMEOUT=
+CODEGEN_TARGET=
 ```
+
+The `examples/autonomous-research-agent/` example additionally reads `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, and `OLLAMA_HOST` to select an available provider.
 
 ### TypeScript
 
@@ -561,10 +584,10 @@ MIT © DCYFR
 
 ## 🔗 Related Templates
 
-- [@dcyfr/ai](https://github.com/dcyfr/dcyfr-ai) - Core AI framework
-- [@dcyfr/ai-rag](https://github.com/dcyfr/dcyfr-ai-rag) - RAG systems
-- [@dcyfr/ai-graphql](https://github.com/dcyfr/dcyfr-ai-graphql) - GraphQL API
-- [@dcyfr/ai-code-gen](https://github.com/dcyfr/dcyfr-ai-code-gen) - Code generation
+- [@dcyfr/ai](https://github.com/dcyfr-labs/dcyfr-ai) - Core AI framework
+- [@dcyfr/ai-rag](https://github.com/dcyfr-labs/dcyfr-ai-rag) - RAG systems
+- [@dcyfr/ai-graphql](https://github.com/dcyfr-labs/dcyfr-ai-graphql) - GraphQL API
+- [@dcyfr/ai-code-gen](https://github.com/dcyfr-labs/dcyfr-ai-code-gen) - Code generation
 
 ## 📞 Support
 
