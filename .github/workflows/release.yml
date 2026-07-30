@@ -65,7 +65,13 @@ jobs:
         run: npm install && npm install -D @changesets/cli @changesets/changelog-github
       
       - name: Upgrade npm to ensure OIDC support
-        run: npm install -g npm@latest
+        # Stay on npm 11.x: npm 12 requires node ^22.22.2 || ^24.15.0 || >=26.0.0,
+        # which the node pin above (24.13.0) does not satisfy — so `npm@latest`
+        # aborts with EBADENGINE and takes the whole release with it. 11.x keeps
+        # the OIDC/trusted-publishing support this step exists for (npm >=11.5.1)
+        # and only needs node >=22.9.0. Revisit when the node pin moves to
+        # >=24.15.0, at which point `npm@latest` is safe again.
+        run: npm install -g npm@^11
       
       - name: Verify npm version and OIDC configuration
         run: |
