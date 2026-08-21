@@ -79,7 +79,7 @@ jobs:
           echo "NPM_CONFIG_PROVENANCE: $NPM_CONFIG_PROVENANCE"
       
       - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           publish: npm run release
         env:
