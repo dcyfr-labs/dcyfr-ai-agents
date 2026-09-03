@@ -1,8 +1,42 @@
 {
   "repo_notes": [
     {
-      "content": "Private DCYFR-specific agent implementations. Document the specialized agents (rei, architect, asuka, librarian, scout, sentinel, shinji), their capabilities, execution patterns, and how they integrate with the delegation framework and workspace automation systems.",
-      "author": "DCYFR Engineering"
+      "content": "A GitHub starter template, not an npm package: package.json is marked private. Readers arrive intending to clone it.",
+      "author": "rei-doc-specialist"
+    },
+    {
+      "content": "The wiki should read as a build guide for someone starting from this template, not as API reference for a library.",
+      "author": "rei-doc-specialist"
+    }
+  ],
+  "pages": [
+    {
+      "title": "Template Overview",
+      "purpose": "What this template gives you, what it deliberately leaves out, and the shape of an application built from it."
+    },
+    {
+      "title": "Agent Core",
+      "purpose": "The agent implementation under src/agent/: the run loop, tool dispatch, memory access and the observability hooks around each step.",
+      "parent": "Template Overview"
+    },
+    {
+      "title": "Worked Examples",
+      "purpose": "The four example agents in examples/ — autonomous research, research, customer service and code generation — and what each demonstrates.",
+      "parent": "Template Overview"
+    },
+    {
+      "title": "Policy and Security",
+      "purpose": "The policy binding that constrains what an agent may do, and the security posture the template assumes.",
+      "parent": "Template Overview"
+    },
+    {
+      "title": "Testing",
+      "purpose": "The Vitest layout: unit tests, agent tests and integration tests, and how to extend them for your own agent.",
+      "parent": "Template Overview"
+    },
+    {
+      "title": "Architecture and Compatibility",
+      "purpose": "The design decisions recorded in docs/ARCHITECTURE.md and the version compatibility matrix."
     }
   ]
 }
