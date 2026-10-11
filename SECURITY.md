@@ -496,7 +496,7 @@ The framework **trusts all registered tools**. It's your responsibility to:
 **Security Team:** security@dcyfr.ai  
 **General Support:** hello@dcyfr.ai  
 **Website:** https://www.dcyfr.ai  
-**GitHub:** https://github.com/dcyfr/dcyfr-ai-agents
+**GitHub:** https://github.com/dcyfr-labs/dcyfr-ai-agents
 
 ---
 

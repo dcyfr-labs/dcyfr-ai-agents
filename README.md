@@ -580,7 +580,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📄 License
 
-MIT © DCYFR
+MIT © DCYFR Labs
 
 ## 🔗 Related Templates
 

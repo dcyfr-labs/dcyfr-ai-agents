@@ -56,11 +56,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dcyfr/dcyfr-ai-agents.git",
+    "url": "https://github.com/dcyfr-labs/dcyfr-ai-agents.git",
     "directory": "examples/autonomous-research-agent"
   },
   "bugs": {
-    "url": "https://github.com/dcyfr/dcyfr-ai-agents/issues"
+    "url": "https://github.com/dcyfr-labs/dcyfr-ai-agents/issues"
   },
-  "homepage": "https://github.com/dcyfr/dcyfr-ai-agents/tree/main/examples/autonomous-research-agent"
+  "homepage": "https://github.com/dcyfr-labs/dcyfr-ai-agents/tree/main/examples/autonomous-research-agent"
 }

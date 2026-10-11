@@ -966,7 +966,7 @@ const agent = new Agent({
 });
 
 const result = await agent.run(
-  'Get stats for the dcyfr/dcyfr-ai-agents repository'
+  'Get stats for the dcyfr-labs/dcyfr-ai-agents repository'
 );
 ```
 
@@ -1269,9 +1269,9 @@ As of v1.0.0, the following APIs are considered **STABLE** and will not have bre
 
 - 📧 **Email**: hello@dcyfr.ai
 - 🌐 **Website**: https://www.dcyfr.ai
-- 🐙 **GitHub**: https://github.com/dcyfr/dcyfr-ai-agents
-- 💬 **Discussions**: https://github.com/dcyfr/dcyfr-ai-agents/discussions
-- 🐛 **Issues**: https://github.com/dcyfr/dcyfr-ai-agents/issues
+- 🐙 **GitHub**: https://github.com/dcyfr-labs/dcyfr-ai-agents
+- 💬 **Discussions**: https://github.com/dcyfr-labs/dcyfr-ai-agents/discussions
+- 🐛 **Issues**: https://github.com/dcyfr-labs/dcyfr-ai-agents/issues
 
 ---
 
