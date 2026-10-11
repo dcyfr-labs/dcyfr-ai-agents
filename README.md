@@ -62,7 +62,7 @@ npm run dev
 
 `@dcyfr/ai-agents` is part of the **DCYFR Labs** template ecosystem for production-ready AI applications.
 
-- **DCYFR** is a trademark of DCYFR Labs.
+- **DCYFR** is a trademark of Drew Gowan.
 - Primary domain: [www.dcyfr.ai](https://www.dcyfr.ai)
 - Licensing details: [LICENSE](./LICENSE)
 
