@@ -37,7 +37,7 @@ Do not use "DCYFR" trademarks in ways that imply endorsement without permission.
 
 ```bash
 # Clone repository
-git clone https://github.com/dcyfr/dcyfr-ai-agents.git
+git clone https://github.com/dcyfr-labs/dcyfr-ai-agents.git
 cd dcyfr-ai-agents
 
 # Install dependencies
