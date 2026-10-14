@@ -244,7 +244,7 @@ Observability through events:
 ### Prerequisites
 
 ```bash
-# Node.js 18+ required
+# Node.js 20+ required (package.json engines >=20.0.0)
 node --version
 
 # Install dependencies
@@ -298,15 +298,10 @@ console.log(result.metadata);
 ### Environment Validation
 
 ```bash
-# Check runtime configuration
-npm run validate
-
-# View telemetry dashboard
-npm run telemetry
-
-# Alternative CLI commands
-npx @dcyfr/ai validate-runtime
-npx @dcyfr/ai telemetry --recent 20
+# This repo has no root `validate` or `telemetry` scripts.
+# Use the @dcyfr/ai CLI (`@dcyfr/ai` ships two binaries, so name one with -p):
+npx -p @dcyfr/ai dcyfr-ai validate-runtime
+npx -p @dcyfr/ai dcyfr-ai telemetry --period week
 ```
 
 ### Provider Configuration
@@ -395,7 +390,7 @@ echo $OPENAI_API_KEY
 echo $ANTHROPIC_API_KEY
 
 # Validate configuration
-npx @dcyfr/ai validate-runtime
+npx -p @dcyfr/ai dcyfr-ai validate-runtime
 ```
 
 **"Research timeout"**

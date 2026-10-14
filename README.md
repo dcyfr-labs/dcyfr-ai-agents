@@ -35,8 +35,8 @@ cd my-agent
 
 # Install and run
 npm install
-npm run dev
-# ✅ Agent running, ready to process tasks
+npm run example:customer-service
+# Runs the customer-service example agent (`npm run dev` only watches src/index.ts, which exports the library and starts nothing)
 ```
 
 ---
@@ -46,9 +46,9 @@ npm run dev
 | Package                                                            | Purpose                | Type        |
 | ------------------------------------------------------------------ | ---------------------- | ----------- |
 | [@dcyfr/ai](https://github.com/dcyfr-labs/dcyfr-ai)                 | Core AI framework      | npm package |
-| [@dcyfr/ai-nodejs](https://github.com/dcyfr-labs/dcyfr-ai-nodejs)   | Node.js starter        | Template    |
+| [@dcyfr/ai-nodejs-starter](https://github.com/dcyfr-labs/dcyfr-ai-nodejs) (unpublished) | Node.js starter        | Template    |
 | [@dcyfr/ai-api](https://github.com/dcyfr-labs/dcyfr-ai-api)         | REST API template      | Template    |
-| [dcyfr-labs](https://github.com/dcyfr-labs/dcyfr-labs)              | Production Next.js app | Application |
+| [DCYFR Labs](https://www.dcyfr.ai)                                  | Production Next.js app | Application |
 
 > This template declares an **optional peer dependency** on [`@dcyfr/ai`](https://github.com/dcyfr-labs/dcyfr-ai) (`^3.0.3`) — install it if you want the core framework integrations; everything else works without it.
 
@@ -203,6 +203,8 @@ npm install
 ```
 
 ## 💡 Basic Usage
+
+> `@dcyfr/ai-agents` is a template and is not published to npm. The snippets below import from the package name for readability. In a project cloned from this template, import from `./src/index.js` instead (as the `examples/` do).
 
 ```typescript
 import {
