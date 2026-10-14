@@ -25,8 +25,12 @@ Comprehensive API documentation for the `@dcyfr/ai-agents` autonomous agent fram
 
 ## Installation
 
+`@dcyfr/ai-agents` is a template and is not published to npm. Clone it and import from `src/index.js`; the examples below use the package name for readability.
+
 ```bash
-npm install @dcyfr/ai-agents
+npx degit dcyfr-labs/dcyfr-ai-agents my-agent
+cd my-agent
+npm install
 ```
 
 **Requirements:**

@@ -24,7 +24,7 @@ This example showcases the complete DCYFR autonomous operations stack through a 
 ### 1. Prerequisites
 
 ```bash
-# Node.js 18+ required
+# Node.js 20+ required
 node --version
 
 # Install dependencies (from dcyfr-ai-agents root)
@@ -408,9 +408,9 @@ npm run telemetry
 # Validate runtime configuration
 npm run validate
 
-# Alternative: Direct CLI access
-npx @dcyfr/ai telemetry --recent 20
-npx @dcyfr/ai validate-runtime
+# Alternative: Direct CLI access (`@dcyfr/ai` ships two binaries, so name one with -p)
+npx -p @dcyfr/ai dcyfr-ai telemetry --period week
+npx -p @dcyfr/ai dcyfr-ai validate-runtime
 ```
 
 ### Telemetry Events Captured
@@ -425,11 +425,11 @@ npx @dcyfr/ai validate-runtime
 ### Cost Analysis
 
 ```bash
-# Show cost breakdown by provider
-npx @dcyfr/ai telemetry --costs
+# Show usage breakdown by model
+npx -p @dcyfr/ai dcyfr-ai telemetry --breakdown models
 
 # Export research data
-npx @dcyfr/ai telemetry --export research_data.csv
+npx -p @dcyfr/ai dcyfr-ai telemetry --export research_data.csv
 ```
 
 ## 🛠️ Customization & Extension
@@ -632,11 +632,11 @@ npm run demo -- --config development  # Lower thresholds
 
 ## 📚 Related Documentation
 
-- **[AgentRuntime Guide](../../dcyfr-ai/README.md#agent-runtime)** - Core runtime documentation
-- **[Provider Configuration](../../dcyfr-ai/README.md#providers)** - LLM provider setup
-- **[Memory System](../../dcyfr-ai/README.md#memory)** - Memory configuration & usage
-- **[Telemetry Dashboard](../../dcyfr-ai/README.md#telemetry)** - Monitoring & analytics
-- **[Hook System](../../dcyfr-ai/README.md#hooks)** - Extensibility guide
+- **[AgentRuntime Guide](https://github.com/dcyfr-labs/dcyfr-ai/blob/main/README.md#getting-started-with-agentruntime)** - Core runtime documentation
+- **[Provider Configuration](https://github.com/dcyfr-labs/dcyfr-ai/blob/main/README.md#8-provider-setup)** - LLM provider setup
+- **[Memory System](https://github.com/dcyfr-labs/dcyfr-ai/blob/main/README.md#autonomous-agent-runtime)** - Memory configuration & usage
+- **[Telemetry Dashboard](https://github.com/dcyfr-labs/dcyfr-ai/blob/main/README.md#6-telemetry-monitoring--analysis)** - Monitoring & analytics
+- **[Hook System](https://github.com/dcyfr-labs/dcyfr-ai/blob/main/README.md#4-hooks)** - Extensibility guide
 
 ## 🤝 Contributing
 
