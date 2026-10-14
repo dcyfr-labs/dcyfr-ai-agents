@@ -597,4 +597,4 @@ MIT © DCYFR Labs
 
 ---
 
-**Built with ❤️ by DCYFR - Making AI development accessible**
+**Built with ❤️ by DCYFR Labs - Making AI development accessible**
