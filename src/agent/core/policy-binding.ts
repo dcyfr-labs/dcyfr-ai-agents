@@ -1,6 +1,6 @@
 /**
  * Improvement Policy Binding — Agent Manifest Extension
- * TLP:AMBER - Internal Use Only
+ * TLP:CLEAR
  *
  * Allows agents to declare which improvement-policy domains they consume.
  * When the metacognitive runtime approves and applies a policy snapshot,
