@@ -292,4 +292,4 @@ Potential additions (not in P1.1):
 
 **Document Version:** 1.0  
 **Last Updated:** February 5, 2026  
-**Maintained By:** DCYFR Engineering
+**Maintained By:** DCYFR Labs Engineering
