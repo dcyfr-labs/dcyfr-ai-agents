@@ -1,6 +1,6 @@
 /**
  * Policy binding tests — task 4.1
- * TLP:AMBER - Internal Use Only
+ * TLP:CLEAR
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
