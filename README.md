@@ -497,6 +497,7 @@ Both `ShortTermMemory` and `LongTermMemory` implement:
 ### Getting Started
 
 - **[README](README.md)** - This document (Quick start, architecture, examples)
+- **[Docs index](docs/README.md)** - All documentation by topic
 - **[API Reference](docs/API.md)** - Comprehensive API documentation
 - **[Architecture](docs/ARCHITECTURE.md)** - System design and component overview
 - **[Version Compatibility](docs/VERSION_COMPATIBILITY.md)** - Supported dependency versions
