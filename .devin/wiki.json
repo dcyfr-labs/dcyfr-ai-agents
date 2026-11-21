@@ -2,11 +2,11 @@
   "repo_notes": [
     {
       "content": "A GitHub starter template, not an npm package: package.json is marked private. Readers arrive intending to clone it.",
-      "author": "rei-doc-specialist"
+      "author": "dcyfr-doc-specialist"
     },
     {
       "content": "The wiki should read as a build guide for someone starting from this template, not as API reference for a library.",
-      "author": "rei-doc-specialist"
+      "author": "dcyfr-doc-specialist"
     }
   ],
   "pages": [
